@@ -5,9 +5,11 @@ package io.github.swahid.todo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.github.swahid.todo.entity.TaskEntry;
+import io.github.swahid.todo.repository.TaskEntryRepo;
 
 /**
  * @author  'Saurav Wahid'<wahid.saurav@gmail.com>
@@ -17,6 +19,9 @@ import io.github.swahid.todo.entity.TaskEntry;
 
 @Service
 public class TaskEntryService implements BaseService<TaskEntry>{
+	
+	@Autowired
+	private TaskEntryRepo taskEntryRepo;
 
 	@Override
 	public TaskEntry findById(Integer id) throws Exception {
