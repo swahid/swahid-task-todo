@@ -18,8 +18,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author swahid
- *
+ * @author  'Saurav Wahid'<wahid.saurav@gmail.com>
+ * @since   Nov 26, 2021
+ * @version 1.0.1
  */
 
 @Getter
