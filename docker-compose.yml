@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Adm1nI@#
+      MYSQL_DATABASE: todolist
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - '3309:3306'
+networks:
+  exttask:
+volumes:
+  db_data:

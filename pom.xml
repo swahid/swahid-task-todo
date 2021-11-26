@@ -58,6 +58,7 @@
 	</dependencies>
 
 	<build>
+   		<finalName>swahid-task-todo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
