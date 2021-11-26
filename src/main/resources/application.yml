@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+#mysqldatabase config
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3309/smefinance?useUnicode=true&createDatabaseIfNotExist=true
+    username: root
+    password: Adm1nI@#
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true

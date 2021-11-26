@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 'Saurav Wahid'<wahid.saurav@gmail.com>
- *
  * @Since   Nov 26, 2021
- * @version 
+ * @version 1.0.1
  */
 
 @RestController
