@@ -11,10 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class SwahidTaskTodoApplication {
+public class TaskTodoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwahidTaskTodoApplication.class, args);
+		SpringApplication.run(TaskTodoApplication.class, args);
 	}
 
 }
