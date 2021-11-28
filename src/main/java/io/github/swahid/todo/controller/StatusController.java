@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 'Saurav Wahid'<wahid.saurav@gmail.com>
- * @Since   Nov 26, 2021
+ * @Since   Nov 28, 2021
  * @version 1.0.1
  */
 
 @RestController
-@RequestMapping("/api/v1/")
-public class IndexController {
+@RequestMapping("/api/v1/status")
+public class StatusController {
 
 	@GetMapping
-	public ResponseEntity<?> index(){
+	public ResponseEntity<?> staturs(){
 		
 		return ResponseEntity
                 .status(HttpStatus.OK)

@@ -17,8 +17,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "t_task_entry")
-public class TaskEntry extends BaseEntity implements Serializable{
+@Table(name = "t_task")
+public class Task extends BaseEntity implements Serializable{
 
 	/**
 	 * 

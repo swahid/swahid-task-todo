@@ -40,5 +40,5 @@ public class Status extends BaseEntity implements Serializable{
 	private Integer statusWeight;
 
 	@OneToMany(mappedBy="status")
-	private List<TaskEntry> taskEntry;
+	private List<Task> taskEntry;
 }

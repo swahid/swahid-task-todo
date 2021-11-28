@@ -40,6 +40,6 @@ public class Priority extends BaseEntity implements Serializable{
 	private Integer priorityWeight;
 	
 	@OneToMany(mappedBy="priority")
-	private List<TaskEntry> taskEntry;
+	private List<Task> taskEntry;
 
 }
