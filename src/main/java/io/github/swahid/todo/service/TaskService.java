@@ -3,6 +3,7 @@
  */
 package io.github.swahid.todo.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,9 @@ public class TaskService implements BaseService<Task>{
 	@Override
 	@Transactional
 	public Task save(Task entity) throws Exception {
+		entity.setActive(true);
+		entity.setCreatedDate(new Date());
+		entity.setUpdatedDate(new Date());
 		taskRepo.save(entity);
 		return entity;
 	}
