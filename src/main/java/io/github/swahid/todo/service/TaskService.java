@@ -10,6 +10,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import io.github.swahid.todo.entity.Task;
@@ -37,7 +38,7 @@ public class TaskService implements BaseService<Task>{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Task> findAll() throws Exception {
-		return taskRepo.findAll();
+		return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priority.priorityWeight"));
 	}
 
 	@Override
@@ -60,7 +61,5 @@ public class TaskService implements BaseService<Task>{
 		}else {
 			throw new EntityNotFoundException("no task found");
 		}
-		
 	}
-
 }
