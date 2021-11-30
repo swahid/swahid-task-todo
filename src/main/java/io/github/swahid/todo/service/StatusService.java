@@ -3,6 +3,7 @@
  */
 package io.github.swahid.todo.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,29 +28,31 @@ public class StatusService implements BaseService<Status>{
 	@Override
 	@Transactional(readOnly = true)
 	public Status findById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
 		return statusRepo.getById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Status> findAll() throws Exception {
-		// TODO Auto-generated method stub
 		return statusRepo.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void save(Status entity) throws Exception {
+	public Status save(Status entity) throws Exception {
+		entity.setActive(true);
+		entity.setCreatedDate(new Date());
+		entity.setUpdatedDate(new Date());
 		statusRepo.save(entity);
-		
+		return  entity;
 	}
 
 	@Override
 	@Transactional
-	public void delete(Integer id) throws Exception {
+	public Status delete(Integer id) throws Exception {
+		Status status = statusRepo.getById(id);
 		statusRepo.delete(null);
-		
+		return status;
 	}
 
 }

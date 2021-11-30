@@ -17,8 +17,8 @@ public interface BaseService<T> {
 	
 	public List<T> findAll() throws Exception;
 	
-	public void save(T entity) throws Exception;
+	public T save(T entity) throws Exception;
 	
-	public void delete(Integer id) throws Exception;
+	public T delete(Integer id) throws Exception;
 	
 }

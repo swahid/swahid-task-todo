@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,6 +40,7 @@ public class Status extends BaseEntity implements Serializable{
 	@Column(name = "status_weight", nullable = false, unique = true)
 	private Integer statusWeight;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="status")
 	private List<Task> taskEntry;
 }

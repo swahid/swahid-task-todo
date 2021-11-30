@@ -13,6 +13,7 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -35,11 +36,13 @@ public class Task extends BaseEntity implements Serializable{
 	
 	@Column(name = "description", columnDefinition = "Text")
 	private String description;
-	
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "start_date", nullable = true)
     private Date startDate;
-	
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "end_date", nullable = true)
     private Date endDate;
