@@ -1,4 +1,4 @@
-version: '3'
+version: "3.5"
 
 services:
   mariadb:
@@ -6,12 +6,29 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: Adm1nI@#
-      MYSQL_DATABASE: todolist
     volumes:
       - db_data:/var/lib/mysql
     ports:
       - '3309:3306'
+
+
+  swahid-task:
+    image: swahid-task:latest
+    restart: always
+    ports:
+      - "4400:4400"                       #APPLICATION PORT
+    depends_on:                           #define dependencies of this app
+      - mariadb                           #dependency name (which is defined with this name 'db' in this file earlier)
+    build:
+      context: .                          #docker file path (. means root directory)
+      dockerfile: Dockerfile              #docker file name
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3306/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Adm1nI@#
+
 networks:
-  exttask:
+  sme_task:
 volumes:
   db_data:

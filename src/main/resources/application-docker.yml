@@ -1,9 +1,12 @@
+server:
+  port: 4400
+
 #Local Mysql DB Config
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysqldb/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
-    username: root
+    url: SPRING_DATASOURCE_URL
+    username: SPRING_DATASOURCE_USERNAME
     password: Adm1nI@#
   jpa:
     hibernate.ddl-auto: update
