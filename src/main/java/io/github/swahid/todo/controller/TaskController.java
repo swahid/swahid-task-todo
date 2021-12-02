@@ -58,7 +58,7 @@ public class TaskController {
 	}
 	
 	@ApiOperation(value = "Post Task ", response = ResponseEntity.class, tags = "saveTask")
-	@DeleteMapping("delete")
+	@DeleteMapping
 	public ResponseEntity<?> task(@RequestParam(value = "taskId", required = true) Integer taskId ){
 		try {
 			return ResponseEntity
