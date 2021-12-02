@@ -5,6 +5,7 @@ package io.github.swahid.todo.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -38,15 +39,35 @@ public class TaskService implements BaseService<Task>{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Task> findAll() throws Exception {
-		return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priority.priorityWeight"));
+
+		return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priorityValue"));
+	}
+
+	@Transactional(readOnly = true)
+	public Object filter(Integer taskId, String status, String priority) throws Exception {
+
+		if (Objects.nonNull(taskId)){
+			return taskRepo.getById(taskId);
+		}else if (Objects.nonNull(status)){
+			return taskRepo.findByStatus(status, Sort.by(Sort.Direction.DESC, "priorityValue"));
+		}else if (Objects.nonNull(priority)){
+			return taskRepo.findByPriority(priority, Sort.by(Sort.Direction.DESC, "priorityValue"));
+		}else{
+			return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priorityValue"));
+		}
 	}
 
 	@Override
 	@Transactional
 	public Task save(Task entity) throws Exception {
-		entity.setActive(true);
-		entity.setCreatedDate(new Date());
-		entity.setUpdatedDate(new Date());
+
+		if (Objects.isNull(entity.getTaskId())){
+			entity.setActive(true);
+			entity.setCreatedDate(new Date());
+			entity.setUpdatedDate(new Date());
+		}else{
+			entity.setUpdatedDate(new Date());
+		}
 		taskRepo.save(entity);
 		return entity;
 	}

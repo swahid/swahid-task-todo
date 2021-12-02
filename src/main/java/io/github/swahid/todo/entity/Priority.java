@@ -2,6 +2,7 @@ package io.github.swahid.todo.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,31 +18,31 @@ import lombok.Setter;
 
 /**
  * @author  'Saurav Wahid'<wahid.saurav@gmail.com>
- * @since   Nov 26, 2021
+ * @since   DEC 02, 2021
  * @version 1.0.1
  */
 
-@Getter
-@Setter
-@Entity
-@Table(name="t_priority")
-public class Priority extends BaseEntity implements Serializable{
 
-	private static final long serialVersionUID = 2213140970611400177L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "priority_id", nullable = false, unique = true)
-	private Integer priorityId;
-	
-	@Column(name = "priority_name", nullable = false, unique = true)
-	private String priorityName;
-	
-	@Column(name = "priority_weight", nullable = false, unique = true)
-	private Integer priorityWeight;
+public enum Priority {
 
-	@JsonIgnore
-	@OneToMany(mappedBy="priority")
-	private List<Task> taskEntry;
+    LOW(100), MEDIUM(200), HIGH(300);
+
+    private int priority;
+
+    private Priority(int priority) {
+        this.priority = priority;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public static Priority of(int priority) {
+        return Stream.of(Priority.values())
+                .filter(p -> p.getPriority() == priority)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
 
 }

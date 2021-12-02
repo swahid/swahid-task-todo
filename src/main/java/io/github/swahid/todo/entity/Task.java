@@ -13,13 +13,15 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "t_task")
-public class Task extends BaseEntity implements Serializable{
+public class Task implements Serializable{
 
 	/**
 	 * 
@@ -46,15 +48,41 @@ public class Task extends BaseEntity implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "end_date", nullable = true)
     private Date endDate;
-	
-	@ManyToOne
-    @JoinColumn(name="priority_id", nullable=true)
+
+	@Basic
+	private int priorityValue;
+
+	@Transient
 	private Priority priority;
-	
-	@ManyToOne
-    @JoinColumn(name="status_id", nullable=true)
+
+	@Enumerated(EnumType.ORDINAL)
 	private Status status;
-	
-   
+
+	@Column(name = "is_active")
+	private boolean isActive;
+
+
+	@CreatedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdDate;
+
+
+	@LastModifiedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedDate;
+
+	@PostLoad
+	void fillTransient() {
+		if (priorityValue > 0) {
+			this.priority = Priority.of(priorityValue);
+		}
+	}
+
+	@PrePersist
+	void fillPersistent() {
+		if (priority != null) {
+			this.priorityValue = priority.getPriority();
+		}
+	}
 	
 }

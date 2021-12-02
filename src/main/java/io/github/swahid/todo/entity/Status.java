@@ -21,26 +21,8 @@ import lombok.Setter;
  * @version 1.0.1
  */
 
-@Getter
-@Setter
-@Entity
-@Table(name="t_status")
-public class Status extends BaseEntity implements Serializable{
 
-	private static final long serialVersionUID = 2422840202333290973L;
+public enum Status {
+	BACKLOG, PENDING, INPROGRESS, DONE, COMPLETE, CLOSE;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "status_id", nullable = false, unique = true)
-	private Integer statusId;
-	
-	@Column(name = "status_name", nullable = false, unique = true)
-	private String statusName;
-	
-	@Column(name = "status_weight", nullable = false, unique = true)
-	private Integer statusWeight;
-
-	@JsonIgnore
-	@OneToMany(mappedBy="status")
-	private List<Task> taskEntry;
 }

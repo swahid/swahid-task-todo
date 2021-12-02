@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3309/smefinance?useUnicode=true&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3309/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
     username: root
     password: Adm1nI@#
   jpa:
@@ -15,3 +15,5 @@ spring:
 
   jackson:
     date-format: 'yyyy-MM-dd HH:mm:ss'
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
