@@ -10,6 +10,8 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import io.github.swahid.todo.entity.Priority;
+import io.github.swahid.todo.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -44,14 +46,14 @@ public class TaskService implements BaseService<Task>{
 	}
 
 	@Transactional(readOnly = true)
-	public Object filter(Integer taskId, String status, String priority) throws Exception {
+	public Object filter(Long taskId, String status, String priority) throws Exception {
 
 		if (Objects.nonNull(taskId)){
 			return taskRepo.getById(taskId);
 		}else if (Objects.nonNull(status)){
-			return taskRepo.findByStatus(status, Sort.by(Sort.Direction.DESC, "priorityValue"));
+			return taskRepo.findByStatus(Enum.valueOf(Status.class, status), Sort.by(Sort.Direction.DESC, "priorityValue"));
 		}else if (Objects.nonNull(priority)){
-			return taskRepo.findByPriority(priority, Sort.by(Sort.Direction.DESC, "priorityValue"));
+			return taskRepo.findByPriority(Enum.valueOf(Priority.class, priority), Sort.by(Sort.Direction.DESC, "priorityValue"));
 		}else{
 			return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priorityValue"));
 		}

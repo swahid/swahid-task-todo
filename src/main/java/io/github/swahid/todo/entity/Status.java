@@ -23,6 +23,6 @@ import lombok.Setter;
 
 
 public enum Status {
-	BACKLOG, PENDING, INPROGRESS, DONE, COMPLETE, CLOSE;
+	backlog, pending, inprogress, done, complete, close;
 
 }

@@ -1,19 +1,5 @@
-server:
-  port: 4400
-
-#mysqldatabase config
 spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3309/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
-    username: root
-    password: Adm1nI@#
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-
-  jackson:
-    date-format: 'yyyy-MM-dd HH:mm:ss'
-    serialization:
-      FAIL_ON_EMPTY_BEANS: false
+  application:
+    name: swahid-task
+  profiles:
+    active: local

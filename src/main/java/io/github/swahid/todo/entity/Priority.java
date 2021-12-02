@@ -25,7 +25,7 @@ import lombok.Setter;
 
 public enum Priority {
 
-    LOW(100), MEDIUM(200), HIGH(300);
+    low(100), medium(200), high(300);
 
     private int priority;
 

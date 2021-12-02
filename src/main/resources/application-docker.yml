@@ -1,0 +1,16 @@
+#Local Mysql DB Config
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysqldb/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
+    username: root
+    password: Adm1nI@#
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: false
+
+  jackson:
+    date-format: 'yyyy-MM-dd HH:mm:ss' #date received format
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false

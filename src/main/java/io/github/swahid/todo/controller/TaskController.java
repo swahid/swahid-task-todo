@@ -30,7 +30,7 @@ public class TaskController {
 
 	@ApiOperation(value = "Get Task ", response = ResponseEntity.class, tags = "getTask")
 	@GetMapping
-	public ResponseEntity<?> task(@RequestParam(value = "taskId", required = false) Integer taskId,
+	public ResponseEntity<?> task(@RequestParam(value = "taskId", required = false) Long taskId,
 								  @RequestParam(value = "status", required = false) String status,
 								  @RequestParam(value = "priority", required = false) String priority
 								  ){

@@ -6,6 +6,8 @@ package io.github.swahid.todo.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import io.github.swahid.todo.entity.Priority;
+import io.github.swahid.todo.entity.Status;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -18,8 +20,7 @@ import io.github.swahid.todo.entity.Task;
  */
 public interface TaskRepo extends JpaRepository<Task, Serializable>{
 
-    List<Task> findByStatus(String status, Sort sort);
-    List<Task> findByPriority(String priority, Sort sort);
-    List<Task> findByStatusAndPriority(String status, String priority, Sort sort);
+    List<Task> findByStatus(Status status, Sort sort);
+    List<Task> findByPriority(Priority priority, Sort sort);
 
 }

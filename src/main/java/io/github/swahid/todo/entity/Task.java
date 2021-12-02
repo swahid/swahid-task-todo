@@ -11,6 +11,7 @@ import javax.persistence.*;
  * @version 1.0.1
  */
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -21,17 +22,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Setter
 @Entity
 @Table(name = "t_task")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Task implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7476860246069234264L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "task_id", nullable = false)
-	private Integer taskId;
+	private Long taskId;
 	
 	@Column(name = "title", nullable = false, length = 255)
 	private String title;
@@ -55,7 +54,7 @@ public class Task implements Serializable{
 	@Transient
 	private Priority priority;
 
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Status status;
 
 	@Column(name = "is_active")
