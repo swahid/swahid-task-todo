@@ -34,7 +34,7 @@ public class TaskService implements BaseService<Task>{
 
 	@Override
 	@Transactional(readOnly = true)
-	public Task findById(Integer id) throws Exception {
+	public Task findById(Long id) throws Exception {
 		return taskRepo.getById(id);
 	}
 
@@ -76,7 +76,7 @@ public class TaskService implements BaseService<Task>{
 
 	@Override
 	@Transactional
-	public Task delete(Integer id) throws Exception {
+	public Task delete(Long id) throws Exception {
 		Optional<Task> taskOption = taskRepo.findById(id);
 		if (taskOption.isPresent()) {
 			taskRepo.delete(taskOption.get());

@@ -13,12 +13,12 @@ import java.util.List;
  */
 public interface BaseService<T> {
 
-	public T findById(Integer id) throws Exception;
+	public T findById(Long id) throws Exception;
 	
 	public List<T> findAll() throws Exception;
 	
 	public T save(T entity) throws Exception;
 	
-	public T delete(Integer id) throws Exception;
+	public T delete(Long id) throws Exception;
 	
 }

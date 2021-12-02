@@ -64,7 +64,7 @@ public class TaskController {
 	
 	@ApiOperation(value = "Post Task ", response = ResponseEntity.class, tags = "saveTask")
 	@DeleteMapping
-	public ResponseEntity<?> task(@RequestParam(value = "taskId", required = true) Integer taskId ){
+	public ResponseEntity<?> task(@RequestParam(value = "taskId", required = true) Long taskId ){
 		try {
 			return ResponseEntity
 					.status(HttpStatus.OK)
