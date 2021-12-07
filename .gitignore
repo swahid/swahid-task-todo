@@ -13,6 +13,8 @@ target/
 .springBeans
 .sts4-cache
 .mvn
+mvnw
+mvnw.cmd
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -20,7 +22,7 @@ target/
 *.ipr
 
 ### Mac M1 ###
-.Dstore
+.DS_Store
 .keepme
 
 ### NetBeans ###
