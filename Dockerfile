@@ -1,5 +1,5 @@
-From openjdk:17
-EXPOSE 8080
+From openjdk:17-jdk-alpine
+EXPOSE 4400
 
 WORKDIR /app
 copy ./target/swahid-task-todo.jar swahid-task-todo.jar
