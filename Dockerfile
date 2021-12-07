@@ -1,4 +1,4 @@
-From openjdk:17-jdk-alpine
+From openjdk:17
 EXPOSE 4400
 
 WORKDIR /app
