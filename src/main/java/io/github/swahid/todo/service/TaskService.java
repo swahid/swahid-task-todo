@@ -41,21 +41,20 @@ public class TaskService implements BaseService<Task>{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Task> findAll() throws Exception {
-
-		return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priorityValue"));
+		return taskRepo.findAll(getSortBy("priorityValue"));
 	}
 
 	@Transactional(readOnly = true)
 	public Object filter(Long taskId, String status, String priority) throws Exception {
 
-		if (Objects.nonNull(taskId)){
+		if (Objects.nonNull(taskId) && Objects.isNull(status) && Objects.isNull(priority)){
 			return taskRepo.getById(taskId);
-		}else if (Objects.nonNull(status)){
-			return taskRepo.findByStatus(Enum.valueOf(Status.class, status), Sort.by(Sort.Direction.DESC, "priorityValue"));
-		}else if (Objects.nonNull(priority)){
-			return taskRepo.findByPriority(Enum.valueOf(Priority.class, priority), Sort.by(Sort.Direction.DESC, "priorityValue"));
+		}else if (Objects.isNull(taskId) && Objects.nonNull(status) && Objects.isNull(priority)){
+			return taskRepo.findByStatus(Enum.valueOf(Status.class, status), getSortBy("priorityValue"));
+		}else if (Objects.isNull(taskId) && Objects.isNull(status) && Objects.nonNull(priority)){
+			return taskRepo.findByPriority(Enum.valueOf(Priority.class, priority), getSortBy("priorityValue"));
 		}else{
-			return taskRepo.findAll(Sort.by(Sort.Direction.DESC, "priorityValue"));
+			return findAll();
 		}
 	}
 
@@ -84,5 +83,13 @@ public class TaskService implements BaseService<Task>{
 		}else {
 			throw new EntityNotFoundException("no task found");
 		}
+	}
+
+	private Sort getSortBy(String column){
+		return Sort.by(Sort.Direction.DESC, column);
+	}
+
+	private Sort getSortBy(String... column){
+		return Sort.by(Sort.Direction.DESC, column);
 	}
 }

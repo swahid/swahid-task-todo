@@ -6,7 +6,7 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     #change connection ip port before run
-    url: jdbc:mysql://localhost:3309/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/swahid_task?useUnicode=true&createDatabaseIfNotExist=true
     username: root
     password: Adm1nI@#
   jpa:
